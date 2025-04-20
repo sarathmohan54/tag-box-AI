@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Facebook Thumbnail Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        .test-case {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #1877f2;
+            margin-bottom: 10px;
+        }
+        .thumbnail {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .url {
+            word-break: break-all;
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Facebook Video Thumbnail Test</h1>
+    
+    <div class="test-case">
+        <h2>Share URL Format</h2>
+        <div class="url">https://www.facebook.com/share/r/12EAQDj6iye/</div>
+        <div class="iframe-container">
+            <iframe 
+                src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fr%2F12EAQDj6iye%2F&show_text=false" 
+                scrolling="no" 
+                frameborder="0" 
+                allowfullscreen="true" 
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
+        </div>
+    </div>
+
+    <div class="test-case">
+        <h2>Alternative Share URL Format</h2>
+        <div class="url">https://www.facebook.com/share/v/1BsTqptbLh/</div>
+        <div class="iframe-container">
+            <iframe 
+                src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1BsTqptbLh%2F&show_text=false" 
+                scrolling="no" 
+                frameborder="0" 
+                allowfullscreen="true" 
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
+        </div>
+    </div>
+
+    <div class="test-case">
+        <h2>CDN Thumbnail Test 1</h2>
+        <div class="url">https://scontent-cdninstagram.fbom36-1.fna.fbcdn.net/v/t15.5256-10/12EAQDj6iye_n.jpg</div>
+        <img class="thumbnail" 
+             src="https://scontent-cdninstagram.fbom36-1.fna.fbcdn.net/v/t15.5256-10/12EAQDj6iye_n.jpg"
+             onerror="this.src='https://placehold.co/320x320/808080/FFFFFF?text=Thumbnail+Not+Found'">
+    </div>
+
+    <div class="test-case">
+        <h2>CDN Thumbnail Test 2</h2>
+        <div class="url">https://scontent-cdninstagram.fbom36-1.fna.fbcdn.net/v/t15.5256-10/1BsTqptbLh_n.jpg</div>
+        <img class="thumbnail" 
+             src="https://scontent-cdninstagram.fbom36-1.fna.fbcdn.net/v/t15.5256-10/1BsTqptbLh_n.jpg"
+             onerror="this.src='https://placehold.co/320x320/808080/FFFFFF?text=Thumbnail+Not+Found'">
+    </div>
+
+    <script>
+        // Log any image load errors
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function(e) {
+                console.error('Error loading image:', e.target.src);
+            });
+            img.addEventListener('load', function(e) {
+                console.log('Successfully loaded image:', e.target.src);
+            });
+        });
+    </script>
+</body>
+</html> 
